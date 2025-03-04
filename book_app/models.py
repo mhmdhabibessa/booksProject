@@ -24,4 +24,7 @@ class Publisher(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-
+class Review(models.Model):
+    rate = models.IntegerField(max=5,min=0,default=4)
+    created_at= models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)    
