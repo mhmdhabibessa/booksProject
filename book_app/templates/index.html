@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Style the body */
+        body {
+            font-family: Arial;
+            /* margin: 0; */
+        }
+
+        /* Header/Logo Title */
+        .header {
+            padding: 60px;
+            text-align: center;
+            background: #1abc9c;
+            color: white;
+            background: url('https://t3.ftcdn.net/jpg/08/15/90/80/360_F_815908053_Mfy2DJfv1iFSdL6ET9pRD5R5VzOOEu5k.jpg');
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            font-size: 30px;
+        }
+
+        /* Page Content */
+        .content {
+            padding: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .card-book {
+            width: 25%;
+            background-color: rgb(237, 200, 173);
+            border: 1px solid slategrey;
+            padding: 12px;
+            box-shadow: 4px 4px 8px wheat;
+        }
+
+        .card-book img {
+            width: 100px;
+            height: 80px;
+
+        }
+
+        .card-book h1,
+        p,
+        strong {
+            background-color: aliceblue;
+            border-radius: 8px;
+            box-shadow: 4px 4px 4px beige;
+            color: black;
+            padding: 5px;
+        }
+
+        .authors-card {
+            margin: auto;
+            background-color: blanchedalmond;
+            border: 1px saddlebrown silver;
+            box-shadow: 5px 5px 10px black;
+            padding: 10px;
+        }
+
+        .authors-card h2 {
+            border-bottom: #1abc9c solid 2px;
+            width: max-content;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Header</h1>
+        <p>My supercool header</p>
+    </div>
+
+    <div class="content">
+        {% for book in books %}
+        <div class="card-book" style="background: url({{book.img}});">
+            <h1>{{ book.title }}</h1>
+            <!-- <img alt=""> -->
+            <p>{{ book.description }}</p>
+            <strong>{{ book.author.name }}</strong>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="authors-card">
+        <h1>Authors:</h1>
+
+        {% for author in authors %}
+        <h2>{{ author.name }}</h2>
+        <ul>
+            {% for book in author.books.all %}
+            <li>{{ book.title }}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
